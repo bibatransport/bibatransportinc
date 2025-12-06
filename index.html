@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Biba Transport Inc. | Trucking Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --primary: #fa2b00;       /* main orange-red from logo */
+      --primary-light: #ff7a45; /* lighter accent */
+      --dark: #1f2933;
+      --muted: #6b7280;
+      --bg: #f3f4f6;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout helpers */
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      padding: 0 16px;
+      margin: 0 auto;
+    }
+
+    /* Header / Nav */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 2px solid var(--primary);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 0;
+      background: var(--primary);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      border-radius: 999px;
+      padding: 6px 14px;
+      border: 1px solid var(--primary);
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+    }
+
+    .nav-cta:hover {
+      background: #fff;
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero {
+      background: radial-gradient(circle at top left, #ffe5dc, #fef2f2, #f3f4f6);
+      padding: 40px 0 48px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.8fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .hero-highlight {
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 18px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      background: rgba(250, 43, 0, 0.06);
+      color: #7f1d1d;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge strong {
+      font-weight: 700;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .btn-primary:hover {
+      background: #d92500;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #fff;
+      color: var(--dark);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-secondary:hover {
+      background: #f9fafb;
+      border-color: #9ca3af;
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-right-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.15);
+      border: 1px solid #fee2e2;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-card-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 0.8rem;
+    }
+
+    .hero-stat {
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: #f9fafb;
+      border: 1px dashed #e5e7eb;
+    }
+
+    .hero-stat span {
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .stat-value {
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .stat-pill {
+      font-size: 0.7rem;
+      margin-top: 4px;
+      display: inline-flex;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(250, 43, 0, 0.06);
+      color: #7f1d1d;
+    }
+
+    .hero-lanes {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed #e5e7eb;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-lanes strong {
+      color: var(--dark);
+    }
+
+    /* Sections */
+    section {
+      padding: 40px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px 16px 14px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.03);
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .card-body {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .card-list {
+      list-style: disc;
+      padding-left: 18px;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .card-list li + li {
+      margin-top: 2px;
+    }
+
+    /* About / Safety */
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 3px 9px;
+      font-size: 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: #fff;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .two-col p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .check-list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .check-list li {
+      margin-bottom: 6px;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .check-list li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.75rem;
+      color: var(--primary);
+      transform: translateY(1px);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .contact-card strong {
+      color: var(--dark);
+    }
+
+    .contact-fields {
+      margin-top: 10px;
+      font-size: 0.88rem;
+    }
+
+    .contact-fields div + div {
+      margin-top: 4px;
+    }
+
+    .form-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px;
+      border: 1px solid #e5e7eb;
+      box-shadow: inset 0 0 0 1px rgba(250, 43, 0, 0.03);
+      font-size: 0.88rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      font-family: inherit;
+      font-size: 0.86rem;
+      background: #f9fafb;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(250, 43, 0, 0.3);
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .form-footer {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.76rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      padding: 18px 0;
+      font-size: 0.8rem;
+      margin-top: 24px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-legal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .footer-legal span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-legal strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .footer-address {
+      color: #d1d5db;
+      font-size: 0.8rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner,
+      .two-col,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right-card {
+        order: -1;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 26px;
+      }
+
+      .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="nav-left">
+          <div class="logo-wrap">
+            <!-- Replace "biba-logo.png" with your actual logo filename -->
+            <img src="biba-logo.png" alt="Biba Transport Inc. logo" />
+          </div>
+          <div class="brand-text">
+            <div class="brand-name">Biba Transport Inc.</div>
+            <div class="brand-sub">Chowchilla, California</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#coverage">Coverage</a>
+          <a href="#contact">Contact</a>
+          <a href="#contact" class="nav-cta">Request a Quote</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Dry Van Truckload Carrier</div>
+          <h1 class="hero-title">
+            Reliable freight capacity with
+            <span class="hero-highlight">Biba Transport Inc.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Asset-based trucking company providing dependable dry van transportation for shippers and broker partners.
+            We focus on on-time performance and clear communication from pickup to delivery.
+          </p>
+
+          <div class="hero-badges">
+            <div class="badge">
+              <strong>MC #424295</strong> · DOT #1011531
+            </div>
+            <div class="badge">
+              <strong>Dry Van</strong> · Truckload Freight
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              Request a Quote
+            </button>
+            <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+              View Services
+            </button>
+          </div>
+
+          <p class="hero-note">
+            Based in Chowchilla, CA and serving lanes throughout the Western U.S., with a focus on California and surrounding states.
+          </p>
+        </div>
+
+        <aside class="hero-right-card">
+          <div class="hero-card-header">
+            <span>Carrier Snapshot</span>
+            <span>Biba Transport Inc.</span>
+          </div>
+          <div class="hero-card-title">Dry Van Capacity You Can Count On</div>
+          <div class="hero-card-grid">
+            <div class="hero-stat">
+              <span class="stat-label">Equipment Type</span>
+              <span class="stat-value">53' Dry Vans</span>
+              <span class="stat-pill">Live loads & unloads</span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-label">Service Focus</span>
+              <span class="stat-value">Truckload</span>
+              <span class="stat-pill">Contract & spot</span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-label">Communication</span>
+              <span class="stat-value">Proactive updates</span>
+              <span class="stat-pill">Broker & shipper friendly</span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-label">Compliance</span>
+              <span class="stat-value">FMCSA Registered</span>
+              <span class="stat-pill">MC 424295 · DOT 1011531</span>
+            </div>
+          </div>
+          <div class="hero-lanes">
+            <strong>Primary Lanes:</strong> California outbound and return freight, including neighboring states such as Arizona and the broader Western region.
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Services</h2>
+        <p class="section-subtitle">
+          Dry van truckload service tailored to shippers, 3PLs, and freight brokers that need a reliable carrier partner.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <article class="card">
+          <h3 class="card-title">Dry Van Truckload</h3>
+          <p class="card-body">
+            Standard 53' dry van equipment for palletized and general freight. Ideal for distribution centers,
+            cross-docks, and warehouse-to-warehouse shipments.
+          </p>
+          <ul class="card-list">
+            <li>Full truckload (FTL) shipments</li>
+            <li>Multi-stop options when needed</li>
+            <li>Dock-to-dock service</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Regional Coverage</h3>
+          <p class="card-body">
+            Freight solutions built around California origin and destination points, with service into nearby states such
+            as Arizona and the larger Western region.
+          </p>
+          <ul class="card-list">
+            <li>California outbound & inbound lanes</li>
+            <li>Flexible options on return freight</li>
+            <li>Driver familiarity with key corridors</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Broker & Shipper Focused</h3>
+          <p class="card-body">
+            Clear communication and consistent updates so you always know where your load stands—from dispatch to POD.
+          </p>
+          <ul class="card-list">
+            <li>Pickup & delivery confirmations</li>
+            <li>Timely updates on any delays</li>
+            <li>Professional drivers & dispatch</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / SAFETY -->
+  <section id="about">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <div class="pill">About Biba Transport Inc.</div>
+          <h2 class="section-title" style="text-align:left; margin-bottom:8px;">
+            A local carrier with a commitment to doing things right
+          </h2>
+          <p>
+            Biba Transport Inc. is a California-based trucking company operating out of Chowchilla, CA. We focus on dry
+            van freight and building long-term relationships with shippers and broker partners by showing up on time and
+            doing what we say we will do.
+          </p>
+          <p>
+            Whether you are moving regular lane freight or need help covering spot loads, Biba Transport Inc. brings
+            dependable capacity and straightforward communication.
+          </p>
+        </div>
+
+        <div>
+          <div class="pill">Safety & Compliance</div>
+          <ul class="check-list">
+            <li>FMCSA registered motor carrier (MC #424295 · DOT #1011531)</li>
+            <li>Focus on safe, legal, and compliant operations</li>
+            <li>Professional drivers familiar with Western regional routes</li>
+            <li>Properly maintained tractors and dry van trailers</li>
+            <li>Respect for shipper and receiver facility rules and appointment times</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COVERAGE -->
+  <section id="coverage">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Coverage & Lanes</h2>
+        <p class="section-subtitle">
+          Built around California freight, with the flexibility to support regional lanes into nearby states and the
+          broader Western U.S.
+        </p>
+      </div>
+
+      <div class="card" style="max-width:720px; margin:0 auto;">
+        <h3 class="card-title">Where We Operate</h3>
+        <p class="card-body">
+          While routes can shift based on shipper needs and broker opportunities, the core of our business is moving dry
+          van freight to and from California, including lanes into Arizona and other Western states.
+        </p>
+        <ul class="card-list">
+          <li>Origin & destination points throughout California</li>
+          <li>Access to regional lanes into neighboring states (e.g., AZ)</li>
+          <li>Flexible on new lanes that complement existing routes</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Contact & Quotes</h2>
+        <p class="section-subtitle">
+          Looking to move a load or add a new carrier to your routing guide? Reach out for capacity and rate details.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <strong>Company Information</strong>
+          <div class="contact-fields">
+            <div>Biba Transport Inc.</div>
+            <div>14325 Spyglass Cir</div>
+            <div>Chowchilla, CA 93610</div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <strong>Operating Authority</strong>
+            <div class="contact-fields">
+              <div>MC #: 424295</div>
+              <div>USDOT #: 1011531</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <strong>Primary Equipment</strong>
+            <div class="contact-fields">
+              <div>53' Dry Van</div>
+              <div>Truckload freight</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <strong>Contact</strong>
+            <div class="contact-fields">
+              <!-- Replace the placeholders below with real contact info before going live -->
+              <div><em>Phone:</em> [Add phone number]</div>
+              <div><em>Email:</em> [Add email address]</div>
+            </div>
+          </div>
+        </div>
+
+        <form class="form-card">
+          <!-- If you want this to submit somewhere, replace with a real action (e.g. Formspree or custom backend) -->
+          <div class="form-row">
+            <div>
+              <label for="name">Your Name</label>
+              <input id="name" name="name" type="text" placeholder="First & last name" />
+            </div>
+            <div>
+              <label for="company">Company</label>
+              <input id="company" name="company" type="text" placeholder="Shipper / Broker / 3PL" />
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-top:10px;">
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" />
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" placeholder="(###) ###-####" />
+            </div>
+          </div>
+
+          <div style="margin-top:10px;">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="">Select an option</option>
+              <option value="quote">Dry van quote</option>
+              <option value="lane">Ongoing lane / routing guide</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div style="margin-top:10px;">
+            <label for="details">Load / Lane Details</label>
+            <textarea id="details" name="details" placeholder="Origin, destination, commodity, weight, timing, and any other details."></textarea>
+          </div>
+
+          <div class="form-footer">
+            <button type="submit" class="btn-primary">
+              Submit Inquiry
+            </button>
+            <span>
+              This form is for layout only. Connect it to your preferred system (email, Formspree, or TMS) before use.
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-legal">
+          <span>&copy; <span id="year"></span> Biba Transport Inc.</span>
+          <span>
+            <strong>MC #424295</strong>
+            <span>·</span>
+            <strong>DOT #1011531</strong>
+          </span>
+        </div>
+        <div class="footer-address">
+          14325 Spyglass Cir · Chowchilla, CA 93610
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
