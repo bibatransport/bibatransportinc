@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Biba Transport Inc. | Trucking Services</title>
+  <title>Biba Transport Inc. | Dry Van Trucking Services</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --primary: #fa2b00;       /* main orange-red from logo */
-      --primary-light: #ff7a45; /* lighter accent */
-      --dark: #1f2933;
+      --primary: #fa2b00;
+      --primary-light: #ff7a45;
+      --dark: #111827;
       --muted: #6b7280;
       --bg: #f3f4f6;
       --white: #ffffff;
@@ -37,7 +37,6 @@
       display: block;
     }
 
-    /* Layout helpers */
     .container {
       width: 100%;
       max-width: 1120px;
@@ -45,7 +44,6 @@
       margin: 0 auto;
     }
 
-    /* Header / Nav */
     header {
       background: var(--white);
       border-bottom: 1px solid #e5e7eb;
@@ -56,8 +54,8 @@
 
     .nav {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       padding: 10px 0;
     }
 
@@ -87,7 +85,7 @@
     .brand-name {
       font-weight: 700;
       font-size: 1.05rem;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
@@ -98,9 +96,9 @@
 
     .nav-links {
       display: flex;
-      align-items: center;
       gap: 18px;
       font-size: 0.9rem;
+      align-items: center;
     }
 
     .nav-links a {
@@ -116,7 +114,7 @@
       height: 2px;
       width: 0;
       background: var(--primary);
-      transition: width 0.2s ease;
+      transition: width 0.18s ease;
     }
 
     .nav-links a:hover::after {
@@ -140,7 +138,6 @@
       transform: translateY(-1px);
     }
 
-    /* Hero */
     .hero {
       background: radial-gradient(circle at top left, #ffe5dc, #fef2f2, #f3f4f6);
       padding: 40px 0 48px;
@@ -149,7 +146,7 @@
 
     .hero-inner {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.8fr);
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.7fr);
       gap: 32px;
       align-items: center;
     }
@@ -231,7 +228,7 @@
     .btn-primary:hover {
       background: #d92500;
       transform: translateY(-1px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 8px 16px rgba(15, 23, 42, 0.15);
     }
 
     .btn-secondary {
@@ -266,14 +263,15 @@
       padding: 18px 18px 16px;
       box-shadow: 0 14px 30px rgba(15, 23, 42, 0.15);
       border: 1px solid #fee2e2;
+      font-size: 0.83rem;
     }
 
     .hero-card-header {
       display: flex;
       justify-content: space-between;
       margin-bottom: 10px;
-      font-size: 0.8rem;
       color: var(--muted);
+      font-size: 0.78rem;
     }
 
     .hero-card-title {
@@ -286,7 +284,6 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
-      font-size: 0.8rem;
     }
 
     .hero-stat {
@@ -301,15 +298,16 @@
     }
 
     .stat-label {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       color: var(--muted);
       text-transform: uppercase;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.08em;
     }
 
     .stat-value {
       font-weight: 700;
       margin-top: 2px;
+      font-size: 0.86rem;
     }
 
     .stat-pill {
@@ -326,15 +324,14 @@
       margin-top: 12px;
       padding-top: 10px;
       border-top: 1px dashed #e5e7eb;
-      font-size: 0.8rem;
       color: var(--muted);
+      font-size: 0.8rem;
     }
 
     .hero-lanes strong {
       color: var(--dark);
     }
 
-    /* Sections */
     section {
       padding: 40px 0;
     }
@@ -357,7 +354,6 @@
       margin: 0 auto;
     }
 
-    /* Services */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -395,7 +391,6 @@
       margin-top: 2px;
     }
 
-    /* About / Safety */
     .two-col {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
@@ -443,7 +438,6 @@
       transform: translateY(1px);
     }
 
-    /* Contact */
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
@@ -466,12 +460,12 @@
     }
 
     .contact-fields {
-      margin-top: 10px;
+      margin-top: 8px;
       font-size: 0.88rem;
     }
 
     .contact-fields div + div {
-      margin-top: 4px;
+      margin-top: 3px;
     }
 
     .form-card {
@@ -499,7 +493,9 @@
       margin-bottom: 3px;
     }
 
-    input, textarea, select {
+    input,
+    textarea,
+    select {
       width: 100%;
       padding: 7px 9px;
       border-radius: 8px;
@@ -510,7 +506,9 @@
       transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     }
 
-    input:focus, textarea:focus, select:focus {
+    input:focus,
+    textarea:focus,
+    select:focus {
       outline: none;
       border-color: var(--primary);
       box-shadow: 0 0 0 1px rgba(250, 43, 0, 0.3);
@@ -533,7 +531,6 @@
       flex-wrap: wrap;
     }
 
-    /* Footer */
     footer {
       background: #111827;
       color: #9ca3af;
@@ -557,12 +554,6 @@
       align-items: center;
     }
 
-    .footer-legal span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
     .footer-legal strong {
       color: #e5e7eb;
       font-weight: 600;
@@ -573,7 +564,6 @@
       font-size: 0.8rem;
     }
 
-    /* Responsive */
     @media (max-width: 900px) {
       .hero-inner,
       .two-col,
@@ -612,7 +602,7 @@
       <div class="nav">
         <div class="nav-left">
           <div class="logo-wrap">
-            <!-- Replace "biba-logo.png" with your actual logo filename -->
+            <!-- make sure this filename matches your uploaded logo -->
             <img src="biba-logo.png" alt="Biba Transport Inc. logo" />
           </div>
           <div class="brand-text">
@@ -647,25 +637,22 @@
           </p>
 
           <div class="hero-badges">
-            <div class="badge">
-              <strong>MC #424295</strong> · DOT #1011531
-            </div>
-            <div class="badge">
-              <strong>Dry Van</strong> · Truckload Freight
-            </div>
+            <div class="badge"><strong>MC #424295</strong> · DOT #1011531</div>
+            <div class="badge"><strong>53' Dry Vans</strong> · Truckload Freight</div>
           </div>
 
           <div class="hero-actions">
             <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
               Request a Quote
             </button>
-            <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
-              View Services
-            </button>
+            <a class="btn-secondary" href="tel:+16617174448">
+              Call Dispatch · (661) 717-4448
+            </a>
           </div>
 
           <p class="hero-note">
-            Based in Chowchilla, CA and serving lanes throughout the Western U.S., with a focus on California and surrounding states.
+            Based in Chowchilla, CA and serving lanes throughout the Western U.S., with a focus on California and nearby
+            states such as Arizona.
           </p>
         </div>
 
@@ -677,12 +664,12 @@
           <div class="hero-card-title">Dry Van Capacity You Can Count On</div>
           <div class="hero-card-grid">
             <div class="hero-stat">
-              <span class="stat-label">Equipment Type</span>
+              <span class="stat-label">Equipment</span>
               <span class="stat-value">53' Dry Vans</span>
               <span class="stat-pill">Live loads & unloads</span>
             </div>
             <div class="hero-stat">
-              <span class="stat-label">Service Focus</span>
+              <span class="stat-label">Service Type</span>
               <span class="stat-value">Truckload</span>
               <span class="stat-pill">Contract & spot</span>
             </div>
@@ -698,7 +685,8 @@
             </div>
           </div>
           <div class="hero-lanes">
-            <strong>Primary Lanes:</strong> California outbound and return freight, including neighboring states such as Arizona and the broader Western region.
+            <strong>Primary Lanes:</strong> California outbound and return freight, including neighboring states such as
+            Arizona and the broader Western region.
           </div>
         </aside>
       </div>
@@ -711,7 +699,8 @@
       <div class="section-header">
         <h2 class="section-title">Services</h2>
         <p class="section-subtitle">
-          Dry van truckload service tailored to shippers, 3PLs, and freight brokers that need a reliable carrier partner.
+          Dry van truckload service tailored to shippers, 3PLs, and freight brokers that need a reliable carrier
+          partner.
         </p>
       </div>
 
@@ -732,13 +721,13 @@
         <article class="card">
           <h3 class="card-title">Regional Coverage</h3>
           <p class="card-body">
-            Freight solutions built around California origin and destination points, with service into nearby states such
-            as Arizona and the larger Western region.
+            Freight solutions built around California origin and destination points, with service into nearby states
+            such as Arizona and the larger Western region.
           </p>
           <ul class="card-list">
             <li>California outbound & inbound lanes</li>
             <li>Flexible options on return freight</li>
-            <li>Driver familiarity with key corridors</li>
+            <li>Drivers familiar with key corridors</li>
           </ul>
         </article>
 
@@ -757,7 +746,7 @@
     </div>
   </section>
 
-  <!-- ABOUT / SAFETY -->
+  <!-- ABOUT -->
   <section id="about">
     <div class="container">
       <div class="two-col">
@@ -811,7 +800,7 @@
         <ul class="card-list">
           <li>Origin & destination points throughout California</li>
           <li>Access to regional lanes into neighboring states (e.g., AZ)</li>
-          <li>Flexible on new lanes that complement existing routes</li>
+          <li>Open to new lanes that complement existing routes</li>
         </ul>
       </div>
     </div>
@@ -845,25 +834,24 @@
           </div>
 
           <div style="margin-top:12px;">
+            <strong>Contact Dispatch</strong>
+            <div class="contact-fields">
+              <div><em>Phone:</em> <a href="tel:+16617174448">(661) 717-4448</a></div>
+              <div><em>Email:</em> <a href="mailto:dispatch@bibatransport.com">dispatch@bibatransport.com</a></div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;">
             <strong>Primary Equipment</strong>
             <div class="contact-fields">
               <div>53' Dry Van</div>
               <div>Truckload freight</div>
             </div>
           </div>
-
-          <div style="margin-top:12px;">
-            <strong>Contact</strong>
-            <div class="contact-fields">
-              <!-- Replace the placeholders below with real contact info before going live -->
-              <div><em>Phone:</em> [Add phone number]</div>
-              <div><em>Email:</em> [Add email address]</div>
-            </div>
-          </div>
         </div>
 
         <form class="form-card">
-          <!-- If you want this to submit somewhere, replace with a real action (e.g. Formspree or custom backend) -->
+          <!-- wire this up to Formspree or another backend if you want it to actually submit -->
           <div class="form-row">
             <div>
               <label for="name">Your Name</label>
@@ -882,7 +870,7 @@
             </div>
             <div>
               <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="tel" placeholder="(###) ###-####" />
+              <input id="phone" name="phone" type="tel" placeholder="(661) 717-4448" />
             </div>
           </div>
 
@@ -898,7 +886,11 @@
 
           <div style="margin-top:10px;">
             <label for="details">Load / Lane Details</label>
-            <textarea id="details" name="details" placeholder="Origin, destination, commodity, weight, timing, and any other details."></textarea>
+            <textarea
+              id="details"
+              name="details"
+              placeholder="Origin, destination, commodity, weight, timing, and any other details."
+            ></textarea>
           </div>
 
           <div class="form-footer">
@@ -906,7 +898,7 @@
               Submit Inquiry
             </button>
             <span>
-              This form is for layout only. Connect it to your preferred system (email, Formspree, or TMS) before use.
+              This form is for layout only. Connect it to email, Formspree, or your TMS before using it in production.
             </span>
           </div>
         </form>
@@ -927,14 +919,13 @@
           </span>
         </div>
         <div class="footer-address">
-          14325 Spyglass Cir · Chowchilla, CA 93610
+          14325 Spyglass Cir · Chowchilla, CA 93610 · (661) 717-4448 · dispatch@bibatransport.com
         </div>
       </div>
     </div>
   </footer>
 
   <script>
-    // Set current year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
